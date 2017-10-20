@@ -23,7 +23,7 @@
 
     <script src="javascript.js"></script>
 
-    <script src="https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json&callback=callbackFunction"></script>
+    <!--<script src="https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json&callback=callbackFunction"></script> -->
 
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,12 +45,90 @@
                 <!-- <button type="submit" class="btn btn-primary" id="submit">Submit</button> -->
             </div>
         </div>
-        <div class="row">
-            <section>
-            </section>
-        </div>
+        <section>
+            <article>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="title">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="current">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- day 1 -->
+                    <div class="col-sm-2 dayBox">
+                        <div class="day1d date">
+                        </div>
+                        <div class="day1day day">
+                        </div>
+                        <div class="day1h high">
+                        </div>
+                        <div class="day1l low">
+                        </div>
+                        <div class="day1t text">
+                        </div>
+                    </div>
+                    <!-- day 2 -->
+                    <div class="col-sm-2 dayBox">
+                        <div class="day2d date">
+                        </div>
+                        <div class="day2day day">
+                        </div>
+                        <div class="day2h high">
+                        </div>
+                        <div class="day2l low">
+                        </div>
+                        <div class="day2t text">
+                        </div>
+                    </div>
+                    <!-- day 3 -->
+                    <div class="col-sm-2 dayBox">
+                        <div class="day3d date">
+                        </div>
+                        <div class="day3day day">
+                        </div>
+                        <div class="day3h high">
+                        </div>
+                        <div class="day3l low">
+                        </div>
+                        <div class="day3t text">
+                        </div>
+                    </div>
+                    <!-- day 4 -->
+                    <div class="col-sm-2 dayBox">
+                        <div class="day4d date">
+                        </div>
+                        <div class="day4day day">
+                        </div>
+                        <div class="day4h high">
+                        </div>
+                        <div class="day4l low">
+                        </div>
+                        <div class="day4t text">
+                        </div>
+                    </div>
+                    <!-- day 5 -->
+                    <div class="col-sm-2 dayBox">
+                        <div class="day5d date">
+                        </div>
+                        <div class="day5day day">
+                        </div>
+                        <div class="day5h high">
+                        </div>
+                        <div class="day5l low">
+                        </div>
+                        <div class="day5t text">
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
     </div>
-
 </body>
 
 </html>
