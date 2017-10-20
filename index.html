@@ -1,0 +1,56 @@
+<!--DOCTYPE html-->
+<html lang="en">
+
+<head>
+    <title>Check the weather! </title>
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/a62cf8bb4a.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="javascript.js"></script>
+
+    <script src="https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json&callback=callbackFunction"></script>
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Check the weather!</h1>
+        </div>
+        <div class="form-group row">
+            <label for="search-input" class="col-sm-3 col-form-label">Type in your city to get the weather!</label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" placeholder="Enter your city!" id="search-input" name="search-input" value="">
+            </div>
+            <div class="col-sm-3">
+                <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
+                <!-- <button type="submit" class="btn btn-primary" id="submit">Submit</button> -->
+            </div>
+        </div>
+        <div class="row">
+            <section>
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>
