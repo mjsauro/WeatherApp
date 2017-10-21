@@ -23,7 +23,10 @@
 
     <script src="javascript.js"></script>
 
-    <!--<script src="https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json&callback=callbackFunction"></script> -->
+    <script>
+
+
+    </script>
 
     <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,39 +34,38 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <h1>Check the weather!</h1>
-        </div>
-        <div class="form-group row">
-            <label for="search-input" class="col-sm-3 col-form-label">Type in your city to get the weather!</label>
-            <div class="col-sm-3">
-                <input class="form-control" type="text" placeholder="Enter your city!" id="search-input" name="search-input" value="">
-            </div>
-            <div class="col-sm-3">
-                <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
-                <!-- <button type="submit" class="btn btn-primary" id="submit">Submit</button> -->
-            </div>
-        </div>
-        <section>
-            <article>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="title">
+    <div class="background">
+        <div class="container-fluid transparent">
+            <div class="jumbotron">
+                <h1>Check the weather!</h1>
+
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="search-input" class=" col-form-label">Type in your city to get the weather!</label>
+                        <input class="form-control " type="text" placeholder="Enter your city!" id="search-input" name="search-input" value="">
+                        <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
+                    </div>
+
+                    <div class="col-sm-offset-3 col-sm-3">
+                        <div class="title"></div>
+                        <h4>Current conditions: </h4>
+                        <p class="currenttemp"> F </p>
+                        <p class="currenttext"></p>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="current-icon">
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h4>Current conditions: </h4>
-                        <p class="currenttemp"> degrees F</p>
-                        <p class="currenttext"></p>
-                    </div>
-                </div>
+            </div>
+        </div>
 
+
+        <section>
+            <article>
                 <div class="row">
                     <!-- day 1 -->
-                    <div class="col-sm-2 dayBox">
+                    <div class="col-xs-4 col-sm-2 col-offset-1 dayBox">
                         <div class="day1d date">
                         </div>
                         <div class="day1day day">
@@ -74,9 +76,11 @@
                         </div>
                         <div class="day1t text">
                         </div>
+                        <div class="day1c">
+                        </div>
                     </div>
                     <!-- day 2 -->
-                    <div class="col-sm-2 dayBox">
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day2d date">
                         </div>
                         <div class="day2day day">
@@ -87,9 +91,11 @@
                         </div>
                         <div class="day2t text">
                         </div>
+                        <div class="day2c">
+                        </div>
                     </div>
                     <!-- day 3 -->
-                    <div class="col-sm-2 dayBox">
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day3d date">
                         </div>
                         <div class="day3day day">
@@ -100,9 +106,11 @@
                         </div>
                         <div class="day3t text">
                         </div>
+                        <div class="day3c">
+                        </div>
                     </div>
                     <!-- day 4 -->
-                    <div class="col-sm-2 dayBox">
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day4d date">
                         </div>
                         <div class="day4day day">
@@ -113,9 +121,11 @@
                         </div>
                         <div class="day4t text">
                         </div>
+                        <div class="day4c">
+                        </div>
                     </div>
                     <!-- day 5 -->
-                    <div class="col-sm-2 dayBox">
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day5d date">
                         </div>
                         <div class="day5day day">
@@ -126,11 +136,13 @@
                         </div>
                         <div class="day5t text">
                         </div>
+                        <div class="day5c">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
+                    <!--</div>
+                    <div class="row"> -->
                     <!-- day 6 -->
-                    <div class="col-sm-2 dayBox">
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day6d date">
                         </div>
                         <div class="day6day day">
@@ -141,9 +153,11 @@
                         </div>
                         <div class="day6t text">
                         </div>
+                        <div class="day6c">
+                        </div>
                     </div>
                     <!-- day 7 -->
-                    <div class="col-sm-2 dayBox">
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day7d date">
                         </div>
                         <div class="day7day day">
@@ -154,9 +168,11 @@
                         </div>
                         <div class="day7t text">
                         </div>
+                        <div class="day7c">
+                        </div>
                     </div>
                     <!-- day 8 -->
-                    <div class="col-sm-2 dayBox">
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day8d date">
                         </div>
                         <div class="day8day day">
@@ -167,9 +183,11 @@
                         </div>
                         <div class="day8t text">
                         </div>
+                        <div class="day8c">
+                        </div>
                     </div>
-                    <!-- day 4 -->
-                    <div class="col-sm-2 dayBox">
+                    <!-- day 9 -->
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day9d date">
                         </div>
                         <div class="day9day day">
@@ -180,9 +198,11 @@
                         </div>
                         <div class="day9t text">
                         </div>
+                        <div class="day9c">
+                        </div>
                     </div>
-                    <!-- day 5 -->
-                    <div class="col-sm-2 dayBox">
+                    <!-- day 10 -->
+                    <div class="col-xs-4 col-sm-2 dayBox">
                         <div class="day10d date">
                         </div>
                         <div class="day10day day">
@@ -193,11 +213,14 @@
                         </div>
                         <div class="day10t text">
                         </div>
+                        <div class="day10c">
+                        </div>
                     </div>
                 </div>
             </article>
         </section>
     </div>
+
 </body>
 
 </html>
