@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    function clear() {
+        $(".title").empty();
+        $(".currenttemp").empty();
+        $(".currenttext").empty();
+        $(".current-icon").empty();
+        $("article > div > div > div").empty();
+    }
+
+
     function weatherReceived(response) {
 
 
@@ -263,10 +272,17 @@ $(document).ready(function () {
         }
     }
 
-    $.getJSON('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22chicago%2C%20il%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=', weatherReceived);
 
-    $("#submit").click(function () {
-        alert("Hello world!");
-    });
+    $("#submit").on('click', function () {
+        var value = $('#city-input').val();
+        var value2 = $('#state-input').val();
+        console.log(value + ' , ' + value2);
+
+        $.getJSON('https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + value + ', ' + value2 + '")&format=json', clear(), weatherReceived);
+    })
+
+
+
+    $.getJSON('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22chicago%2C%20il%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=', weatherReceived);
 
 });

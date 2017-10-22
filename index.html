@@ -41,8 +41,10 @@
 
                 <div class="form-group row">
                     <div class="col-sm-3">
-                        <label for="search-input" class=" col-form-label">Type in your city to get the weather!</label>
-                        <input class="form-control " type="text" placeholder="Enter your city!" id="search-input" name="search-input" value="">
+                        <label for="city-input" class=" col-form-label">Type in your city!</label>
+                        <input class="form-control " type="text" placeholder="Enter your city!" id="city-input" name="city-input" value="">
+                        <label for="state-input" class=" col-form-label">Type in your state!</label>
+                        <input class="form-control " type="text" placeholder="Enter your state!" id="state-input" name="state-input" value="">
                         <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
                     </div>
 
@@ -52,175 +54,175 @@
                         <p class="currenttemp"> F </p>
                         <p class="currenttext"></p>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-xs-2">
                         <div class="current-icon">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <section>
-            <article>
-                <div class="row">
-                    <!-- day 1 -->
-                    <div class="col-xs-4 col-sm-2 col-offset-1 dayBox">
-                        <div class="day1d date">
+
+            <section>
+                <article>
+                    <div class="row">
+                        <!-- day 1 -->
+                        <div class="col-xs-4 col-sm-2 col-offset-1 dayBox">
+                            <div class="day1d date">
+                            </div>
+                            <div class="day1day day">
+                            </div>
+                            <div class="day1h high">
+                            </div>
+                            <div class="day1l low">
+                            </div>
+                            <div class="day1t text">
+                            </div>
+                            <div class="day1c">
+                            </div>
                         </div>
-                        <div class="day1day day">
+                        <!-- day 2 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day2d date">
+                            </div>
+                            <div class="day2day day">
+                            </div>
+                            <div class="day2h high">
+                            </div>
+                            <div class="day2l low">
+                            </div>
+                            <div class="day2t text">
+                            </div>
+                            <div class="day2c">
+                            </div>
                         </div>
-                        <div class="day1h high">
+                        <!-- day 3 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day3d date">
+                            </div>
+                            <div class="day3day day">
+                            </div>
+                            <div class="day3h high">
+                            </div>
+                            <div class="day3l low">
+                            </div>
+                            <div class="day3t text">
+                            </div>
+                            <div class="day3c">
+                            </div>
                         </div>
-                        <div class="day1l low">
+                        <!-- day 4 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day4d date">
+                            </div>
+                            <div class="day4day day">
+                            </div>
+                            <div class="day4h high">
+                            </div>
+                            <div class="day4l low">
+                            </div>
+                            <div class="day4t text">
+                            </div>
+                            <div class="day4c">
+                            </div>
                         </div>
-                        <div class="day1t text">
+                        <!-- day 5 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day5d date">
+                            </div>
+                            <div class="day5day day">
+                            </div>
+                            <div class="day5h high">
+                            </div>
+                            <div class="day5l low">
+                            </div>
+                            <div class="day5t text">
+                            </div>
+                            <div class="day5c">
+                            </div>
                         </div>
-                        <div class="day1c">
-                        </div>
-                    </div>
-                    <!-- day 2 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day2d date">
-                        </div>
-                        <div class="day2day day">
-                        </div>
-                        <div class="day2h high">
-                        </div>
-                        <div class="day2l low">
-                        </div>
-                        <div class="day2t text">
-                        </div>
-                        <div class="day2c">
-                        </div>
-                    </div>
-                    <!-- day 3 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day3d date">
-                        </div>
-                        <div class="day3day day">
-                        </div>
-                        <div class="day3h high">
-                        </div>
-                        <div class="day3l low">
-                        </div>
-                        <div class="day3t text">
-                        </div>
-                        <div class="day3c">
-                        </div>
-                    </div>
-                    <!-- day 4 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day4d date">
-                        </div>
-                        <div class="day4day day">
-                        </div>
-                        <div class="day4h high">
-                        </div>
-                        <div class="day4l low">
-                        </div>
-                        <div class="day4t text">
-                        </div>
-                        <div class="day4c">
-                        </div>
-                    </div>
-                    <!-- day 5 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day5d date">
-                        </div>
-                        <div class="day5day day">
-                        </div>
-                        <div class="day5h high">
-                        </div>
-                        <div class="day5l low">
-                        </div>
-                        <div class="day5t text">
-                        </div>
-                        <div class="day5c">
-                        </div>
-                    </div>
-                    <!--</div>
+                        <!--</div>
                     <div class="row"> -->
-                    <!-- day 6 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day6d date">
+                        <!-- day 6 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day6d date">
+                            </div>
+                            <div class="day6day day">
+                            </div>
+                            <div class="day6h high">
+                            </div>
+                            <div class="day6l low">
+                            </div>
+                            <div class="day6t text">
+                            </div>
+                            <div class="day6c">
+                            </div>
                         </div>
-                        <div class="day6day day">
+                        <!-- day 7 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day7d date">
+                            </div>
+                            <div class="day7day day">
+                            </div>
+                            <div class="day7h high">
+                            </div>
+                            <div class="day7l low">
+                            </div>
+                            <div class="day7t text">
+                            </div>
+                            <div class="day7c">
+                            </div>
                         </div>
-                        <div class="day6h high">
+                        <!-- day 8 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day8d date">
+                            </div>
+                            <div class="day8day day">
+                            </div>
+                            <div class="day8h high">
+                            </div>
+                            <div class="day8l low">
+                            </div>
+                            <div class="day8t text">
+                            </div>
+                            <div class="day8c">
+                            </div>
                         </div>
-                        <div class="day6l low">
+                        <!-- day 9 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day9d date">
+                            </div>
+                            <div class="day9day day">
+                            </div>
+                            <div class="day9h high">
+                            </div>
+                            <div class="day9l low">
+                            </div>
+                            <div class="day9t text">
+                            </div>
+                            <div class="day9c">
+                            </div>
                         </div>
-                        <div class="day6t text">
-                        </div>
-                        <div class="day6c">
+                        <!-- day 10 -->
+                        <div class="col-xs-4 col-sm-2 dayBox">
+                            <div class="day10d date">
+                            </div>
+                            <div class="day10day day">
+                            </div>
+                            <div class="day10h high">
+                            </div>
+                            <div class="day10l low">
+                            </div>
+                            <div class="day10t text">
+                            </div>
+                            <div class="day10c">
+                            </div>
                         </div>
                     </div>
-                    <!-- day 7 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day7d date">
-                        </div>
-                        <div class="day7day day">
-                        </div>
-                        <div class="day7h high">
-                        </div>
-                        <div class="day7l low">
-                        </div>
-                        <div class="day7t text">
-                        </div>
-                        <div class="day7c">
-                        </div>
-                    </div>
-                    <!-- day 8 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day8d date">
-                        </div>
-                        <div class="day8day day">
-                        </div>
-                        <div class="day8h high">
-                        </div>
-                        <div class="day8l low">
-                        </div>
-                        <div class="day8t text">
-                        </div>
-                        <div class="day8c">
-                        </div>
-                    </div>
-                    <!-- day 9 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day9d date">
-                        </div>
-                        <div class="day9day day">
-                        </div>
-                        <div class="day9h high">
-                        </div>
-                        <div class="day9l low">
-                        </div>
-                        <div class="day9t text">
-                        </div>
-                        <div class="day9c">
-                        </div>
-                    </div>
-                    <!-- day 10 -->
-                    <div class="col-xs-4 col-sm-2 dayBox">
-                        <div class="day10d date">
-                        </div>
-                        <div class="day10day day">
-                        </div>
-                        <div class="day10h high">
-                        </div>
-                        <div class="day10l low">
-                        </div>
-                        <div class="day10t text">
-                        </div>
-                        <div class="day10c">
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </section>
+                </article>
+            </section>
+        </div>
     </div>
-
 </body>
 
 </html>
