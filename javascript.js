@@ -1,4 +1,55 @@
 $(document).ready(function () {
+
+    getLocation();
+
+    function getLocation() {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        console.log("Latitude: " + lat +
+            " Longitude: " + long);
+
+        $.getJSON("https://query.yahooapis.com/v1/public/yql?q=SELECT * FROM geo.places WHERE text=\"(" + lat + "," + long + ")\"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", clear(), locationReceived);
+
+
+    }
+
+    function locationReceived(response) {
+
+        console.log(response.query.results.place.locality1.content);
+        var location = response.query.results.place.locality1.content;
+
+        $.getJSON('https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + location + '")&format=json', clear(), weatherTry);
+
+    }
+
+
+
+    $("#submit").on('click', function () {
+        console.log("click fired!");
+        if (($('#city-input').val() == '') && ($('#state-input').val() == '')) {
+            console.log("submit null");
+            getLocation();
+
+        } else {
+
+            var value = $('#city-input').val();
+            var value2 = $('#state-input').val();
+            console.log("submit fired");
+            $.getJSON('https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + value + ', ' + value2 + '")&format=json', clear(), weatherTry);
+        }
+
+
+    })
+
+    $("#detect").on('click', function () {
+        console.log("Detect fired!");
+        getLocation();
+    })
+
     function clear() {
         $(".title").empty();
         $(".currenttemp").empty();
@@ -7,10 +58,7 @@ $(document).ready(function () {
         $("article > div > div > div").empty();
     }
 
-
-    function weatherReceived(response) {
-
-
+    function weatherTry(response) {
         //title
         $(".title").append(response.query.results.channel.description);
 
@@ -27,98 +75,31 @@ $(document).ready(function () {
         $(".currenttext").append(current.text);
         $(".current-icon").append(code);
 
-        //day1
+        $(".weatherTemplate").show();
+        $(".weatherTemplate").empty();
+        var high = ("High: ");
+        var low = ("Low: ");
 
-        var forecast = response.query.results.channel.item.forecast[0];
-
-        $(".day1d").append(forecast.date);
-        $(".day1day").append(forecast.day);
-        $(".day1h").append((high) + (forecast.high) + (unit));
-        $(".day1l").append((low) + (forecast.low) + (unit));
-        $(".day1t").append(forecast.text);
-        $(".day1c").append(code);
-
-        //day2
-        var forecast = response.query.results.channel.item.forecast[1];
-        $(".day2d").append(forecast.date);
-        $(".day2day").append(forecast.day);
-        $(".day2h").append((high) + (forecast.high) + (unit));
-        $(".day2l").append((low) + (forecast.low) + (unit));
-        $(".day2t").append(forecast.text);
-        $(".day2c").append(code);
-
-        //day3
-        var forecast = response.query.results.channel.item.forecast[2];
-        $(".day3d").append(forecast.date);
-        $(".day3day").append(forecast.day);
-        $(".day3h").append((high) + (forecast.high) + (unit));
-        $(".day3l").append((low) + (forecast.low) + (unit));
-        $(".day3t").append(forecast.text);
-        $(".day3c").append(code);
-
-        //day4
-        var forecast = response.query.results.channel.item.forecast[3];
-        $(".day4d").append(forecast.date);
-        $(".day4day").append(forecast.day);
-        $(".day4h").append((high) + (forecast.high) + (unit));
-        $(".day4l").append((low) + (forecast.low) + (unit));
-        $(".day4t").append(forecast.text);
-        $(".day4c").append(code);
-
-        //day5
-        var forecast = response.query.results.channel.item.forecast[4];
-        $(".day5d").append(forecast.date);
-        $(".day5day").append(forecast.day);
-        $(".day5h").append((high) + (forecast.high) + (unit));
-        $(".day5l").append((low) + (forecast.low) + (unit));
-        $(".day5t").append(forecast.text);
-        $(".day5c").append(code);
-
-        //day6
-        var forecast = response.query.results.channel.item.forecast[5];
-        $(".day6d").append(forecast.date);
-        $(".day6day").append(forecast.day);
-        $(".day6h").append((high) + (forecast.high) + (unit));
-        $(".day6l").append((low) + (forecast.low) + (unit));
-        $(".day6t").append(forecast.text);
-        $(".day6c").append(code);
-
-        //day7
-        var forecast = response.query.results.channel.item.forecast[6];
-        $(".day7d").append(forecast.date);
-        $(".day7day").append(forecast.day);
-        $(".day7h").append((high) + (forecast.high) + (unit));
-        $(".day7l").append((low) + (forecast.low) + (unit));
-        $(".day7t").append(forecast.text);
-        $(".day7c").append(code);
-
-        //day8
-        var forecast = response.query.results.channel.item.forecast[7];
-        $(".day8d").append(forecast.date);
-        $(".day8day").append(forecast.day);
-        $(".day8h").append((high) + (forecast.high) + (unit));
-        $(".day8l").append((low) + (forecast.low) + (unit));
-        $(".day8t").append(forecast.text);
-        $(".day8c").append(code);
-
-        //day9
-
-        var forecast = response.query.results.channel.item.forecast[8];
-        $(".day9d").append(forecast.date);
-        $(".day9day").append(forecast.day);
-        $(".day9h").append((high) + (forecast.high) + (unit));
-        $(".day9l").append((low) + (forecast.low) + (unit));
-        $(".day9t").append(forecast.text);
-        $(".day9c").append(code);
-
-        //day10
-        var forecast = response.query.results.channel.item.forecast[9];
-        $(".day10d").append(forecast.date);
-        $(".day10day").append(forecast.day);
-        $(".day10h").append((high) + (forecast.high) + (unit));
-        $(".day10l").append((low) + (forecast.low) + (unit));
-        $(".day10t").append(forecast.text);
-        $(".day10c").append(code);
+        for (var i = 0; i <= 9; i++) {
+            console.log("try fired");
+            var forecast = response.query.results.channel.item.forecast[i];
+            var panel = document.createElement("div");
+            panel.className = 'dayBox col-xs-4 col-sm-2 text-center';
+            var panel
+            $(".weatherTemplate").append(panel);
+            var createDiv = document.createElement("div");
+            $(createDiv).addClass("weatherDate");
+            $(createDiv).append(forecast.date + "<br/>").appendTo(panel);
+            $(createDiv).addClass("weatherDay")
+            $(createDiv).append(forecast.day + "<br/>").appendTo(panel);
+            $(createDiv).addClass("weatherHigh ");
+            $(createDiv).append((high) + (forecast.high + (' F&deg') + "<br/>")).appendTo(panel);
+            $(createDiv).addClass("weatherLow ");
+            $(createDiv).append((low) + (forecast.low + (' F&deg') + "<br/>")).appendTo(panel);
+            $(createDiv).addClass("weatherText ");
+            $(createDiv).append(forecast.text + "<br/>").appendTo(panel);
+            $(createDiv).append(code).appendTo(panel);
+        }
 
         function code() {
             switch (forecast.code) {
@@ -270,19 +251,7 @@ $(document).ready(function () {
                     return ("<img class='img-responsive' src='images/weather/na.svg' > ");
             }
         }
+
     }
-
-
-    $("#submit").on('click', function () {
-        var value = $('#city-input').val();
-        var value2 = $('#state-input').val();
-        console.log(value + ' , ' + value2);
-
-        $.getJSON('https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + value + ', ' + value2 + '")&format=json', clear(), weatherReceived);
-    })
-
-
-
-    $.getJSON('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22chicago%2C%20il%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=', weatherReceived);
 
 });
