@@ -41,13 +41,13 @@ $(document).ready(function () {
             console.log("submit fired");
             $.getJSON('https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + value + ', ' + value2 + '")&format=json', clear(), weatherTry);
         }
-    })
+    });
 
     //location is detected
     $("#detect").on('click', function () {
         console.log("Detect fired!");
         getLocation();
-    })
+    });
 
     //title is cleared
     function clear() {
@@ -80,26 +80,26 @@ $(document).ready(function () {
 
         $(".weatherTemplate").show();
         $(".weatherTemplate").empty();
-        var high = ("High: ");
-        var low = ("Low: ");
+        high = ("High: ");
+        low = ("Low: ");
 
         for (var i = 0; i <= 9; i++) {
             console.log("try fired");
-            var forecast = response.query.results.channel.item.forecast[i];
+            forecast = response.query.results.channel.item.forecast[i];
             var dayOfWeek = forecast.day;
             //rearrange the date
-            var date = forecast.date;
-            var day = date.slice(0, 2);
-            var month = date.slice(2, 6);
-            var year = date.slice(7, 11);
-            var newDate = (month + " " + day + ", " + year)
+            date = forecast.date;
+            day = date.slice(0, 2);
+            month = date.slice(2, 6);
+            year = date.slice(7, 11);
+            newDate = (month + " " + day + ", " + year);
 
             var panel = document.createElement("div");
             panel.className = 'dayBox col-xs-4 col-sm-2 text-center';
-            var panel
+
             $(".weatherTemplate").append(panel);
             var createDiv = document.createElement("div");
-            $(createDiv).addClass("weatherDay")
+            $(createDiv).addClass("weatherDay");
             $(createDiv).append(getDay(dayOfWeek) + "<br /> ").appendTo(panel);
             $(createDiv).addClass("weatherDate");
             $(createDiv).append(newDate + "<br/>").appendTo(panel);
@@ -112,179 +112,172 @@ $(document).ready(function () {
             $(createDiv).append(code).appendTo(panel);
 
             //get the full name of the day of the week
-            function getDay(item) {
-                switch (item) {
-                    case "Sun":
-                        return "Sunday, ";
-                        break;
-                    case "Mon":
-                        return "Monday, ";
-                        break;
-                    case "Tue":
-                        return "Tuesday, ";
-                        break;
-                    case "Wed":
-                        return "Wednesday, ";
-                        break;
-                    case "Thu":
-                        return "Thursday, ";
-                        break;
-                    case "Fri":
-                        return "Friday, ";
-                        break;
-                    case "Sat":
-                        return "Saturday, ";
-                        break;
-                }
+            
+        }
+        function getDay(item) {
+            switch (item) {
+                case "Sun":
+                    return "Sunday, ";
+                case "Mon":
+                    return "Monday, ";
+                case "Tue":
+                    return "Tuesday, ";
+                case "Wed":
+                    return "Wednesday, ";
+                case "Thu":
+                    return "Thursday, ";
+                case "Fri":
+                    return "Friday, ";
+                case "Sat":
+                    return "Saturday, ";
             }
         }
-
         function code() {
             switch (forecast.code) {
                 case "0":
                     return ("<img class='img-responsive' src='images/weather/tornado.svg' > ");
-                    break;
+
                 case "1":
                     return ("<img class='img-responsive' src='images/weather/hurricane.png' > ");
-                    break;
+
                 case "2":
                     return ("<img class='img-responsive' src='images/weather/hurricane.png' > ");
-                    break;
+
                 case "3":
                     return ("<img class='img-responsive' src='images/weather/thunderstorm.svg' > ");
-                    break;
+
                 case "4":
                     return ("<img class='img-responsive' src='images/weather/thunderstorm.svg' > ");
-                    break;
+
                 case "5":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "6":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "7":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "8":
                     return ("<img class='img-responsive' src='images/weather/snowmix.png' > ");
-                    break;
+
                 case "9":
                     return ("<img class='img-responsive' src='images/weather/drizzle.svg' > ");
-                    break;
+
                 case "10":
                     return ("<img class='img-responsive' src='images/weather/sleet.svg' > ");
-                    break;
+
                 case "11":
                     return ("<img class='img-responsive' src='images/weather/sleet.svg' > ");
-                    break;
+
                 case "12":
                     return ("<img class='img-responsive' src='images/weather/rain.svg' > ");
-                    break;
+
                 case "13":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "14":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "15":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "16":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "17":
                     return ("<img class='img-responsive' src='images/weather/hail.svg' > ");
-                    break;
+
                 case "18":
                     return ("<img class='img-responsive' src='images/weather/sleet.svg' > ");
-                    break;
+
                 case "19":
                     return ("<img class='img-responsive' src='images/weather/dusty.png' > ");
-                    break;
+
                 case "20":
                     return ("<img class='img-responsive' src='images/weather/foggy.svg' > ");
-                    break;
+
                 case "21":
                     return ("<img class='img-responsive' src='images/weather/haze.png' > ");
-                    break;
+
                 case "22":
                     return ("<img class='img-responsive' src='images/weather/haze.png' > ");
-                    break;
+
                 case "23":
                     return ("<img class='img-responsive' src='images/weather/windy.svg' > ");
-                    break;
+
                 case "24":
                     return ("<img class='img-responsive' src='images/weather/windy2.svg' > ");
-                    break;
+
                 case "25":
                     return ("<img class='img-responsive' src='images/weather/cold.png' > ");
-                    break;
+
                 case "26":
                     return ("<img class='img-responsive' src='images/weather/cloudy.svg' > ");
-                    break;
+
                 case "27":
                     return ("<img class='img-responsive' src='images/weather/partlycloudynight.svg' > ");
-                    break;
+
                 case "28":
                     return ("<img class='img-responsive' src='images/weather/partlycloudyday.svg' > ");
-                    break;
+
                 case "29":
                     return ("<img class='img-responsive' src='images/weather/partlycloudynight.svg' > ");
-                    break;
+
                 case "30":
                     return ("<img class='img-responsive' src='images/weather/partlycloudyday.svg' > ");
-                    break;
+
                 case "31":
                     return ("<img class='img-responsive' src='images/weather/clearnight.svg' > ");
-                    break;
+
                 case "32":
                     return ("<img class='img-responsive' src='images/weather/sunny.svg' > ");
-                    break;
+
                 case "33":
                     return ("<img class='img-responsive' src='images/weather/clearnight.svg' > ");
-                    break;
+
                 case "34":
                     return ("<img class='img-responsive' src='images/weather/clearday.svg' > ");
-                    break;
+
                 case "35":
                     return ("<img class='img-responsive' src='images/weather/hail.svg' > ");
-                    break;
+
                 case "36":
                     return ("<img class='img-responsive' src='images/weather/sunny.svg' > ");
-                    break;
+
                 case "37":
                     return ("<img class='img-responsive' src='images/weather/thunderstorm2.svg' > ");
-                    break;
+
                 case "38":
                     return ("<img class='img-responsive' src='images/weather/thunderstorm3.svg' > ");
-                    break;
+
                 case "39":
                     return ("<img class='img-responsive' src='images/weather/thunderstorm4.svg' > ");
-                    break;
+
                 case "40":
                     return ("<img class='img-responsive' src='images/weather/rainshowers.svg' > ");
-                    break;
+
                 case "41":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "42":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "43":
                     return ("<img class='img-responsive' src='images/weather/snow.svg' > ");
-                    break;
+
                 case "44":
                     return ("<img class='img-responsive' src='images/weather/partlycloudyday.svg' > ");
-                    break;
+
                 case "45":
                     return ("<img class='img-responsive' src='images/weather/thunderstorm5.svg' > ");
-                    bresnowshowersak;
+
                 case "46":
                     return ("<img class='img-responsive' src='images/weather/thunderstorm2.svg' > ");
-                    break;
+
                 case "47":
                     return ("<img class='img-responsive' src='images/weather/thundershowers.svg' > ");
-                    break;
+
                 default:
                     return ("<img class='img-responsive' src='images/weather/na.svg' > ");
             }
