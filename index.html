@@ -29,48 +29,18 @@
 </head>
 
 <body>
-    <div class="background">
-        <div class="container-fluid transparent">
-            <div class="jumbotron">
-                <h1>Check the weather!</h1>
-
-                <div class="form-group row">
-                    <div class="col-sm-3">
-                        <label for="city-input" class=" col-form-label">Type in your city!</label>
-                        <input class="form-control " type="text" placeholder="Enter your city!" id="city-input" name="city-input" value="">
-                        <label for="state-input" class=" col-form-label">Type in your state!</label>
-                        <input class="form-control " type="text" placeholder="Enter your state!" id="state-input" name="state-input" value="">
-                        <input id="submit" name="submit" type="submit" value="Submit" class="btn btn-primary">
-                        <input id="detect" name="submit" type="submit" value="Detect Location" class="btn btn-primary">
-                    </div>
-
-                    <div class="col-sm-offset-3 col-sm-3">
-                        <div class="title"></div>
-                        <h4>Current conditions: </h4>
-                        <p class="currenttemp"></p>
-                        <p class="currenttext"></p>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="current-icon">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <section>
-                <article>
-                    <div style="display: none" class="weatherTemplate">
-                        <div class="weatherHeader"></div>
-                        <div class="weatherDay"></div>
-                        <div class="weatherHigh"></div>
-                        <div class="weatherLow"></div>
-                        <div class="weatherText"></div>
-                        <div class="weatherCode"></div>
-                    </div>
-                </article>
-            </section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center text-capitalize">
+            <h1>Weather Forecast</h1>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center text-capitalize">
+            <span id="date"></span>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
