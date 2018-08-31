@@ -1,7 +1,9 @@
 $(document).ready(function () {
     
-    getLocation();
+    var now = moment().format('MM DD YY');
 
+    $("#date").append(now);
+    //getLocation();
 
     
 });
