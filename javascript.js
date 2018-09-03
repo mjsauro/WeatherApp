@@ -3,9 +3,8 @@ $(document).ready(function () {
     var now = moment().format('MM DD YY');
 
     $("#date").append(now);
-    //getLocation();
+    getLocation();
 
-    
 });
 
 function getLocation() {
@@ -33,10 +32,15 @@ function getWeather(lat, long)
         success: function(response) {
             console.log(response);
             console.log(response.city.name);
+            console.log();
+
+            for (var i = 0; i < 5; i++);
+            var date1 = (moment.unix(response.list[0].dt).format("LLL"));
+            $("#date1").append(date1);
+
         },
         error: function(error) {
             console.log(error);
         }
-      });
-      
+    });      
 }
