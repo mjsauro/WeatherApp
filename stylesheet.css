@@ -2,10 +2,4 @@ body {
   background-image: -webkit-gradient(linear, left top, right top, from(#5faaf2), color-stop(#409ed9), color-stop(#2692bf), color-stop(#1684a5), to(#15768b));
   background-image: linear-gradient(to right, #5faaf2, #409ed9, #2692bf, #1684a5, #15768b);
 }
-
-h1, #date {
-  color: white;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 4.5em;
-}
 /*# sourceMappingURL=stylesheet.css.map */

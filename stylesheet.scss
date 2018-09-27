@@ -10,15 +10,21 @@ $roboto: 'Roboto', sans-serif;
 
 //font-size
 $h1-size: 4.5em;
-
+$h2-size: 2.5em;
 
 body {
- background-image: $background-color;   
-
+    background-image: $background-color;   
 };
 
-h1, #date  {
-    color: $headline-color;
-    font-family: $ubantu;
-    font-size: $h1-size;
-};
+// h1, #date, .label {
+//     color: $headline-color;
+//     font-family: $ubantu;
+// }
+
+// h1  {
+//     font-size: $h1-size;
+// };
+
+// #date, .label  {
+//     font-size: $h2-size;
+// };
