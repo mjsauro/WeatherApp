@@ -1,5 +1,6 @@
 $(document).ready(function () {
     
+    //everything starts here
     getLocation();
 
 });
@@ -12,8 +13,14 @@ function getLocation() {
 function showPosition(position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
-    getCurrentWeather(lat, long);
+    
+    //retrieves the city, state, zip of coordinates through google maps api
     geoCodeLatLng(lat, long);
+
+    //retrieves the current weather conditions
+    getCurrentWeather(lat, long);
+
+    //retrieves additional weather conditions
     //getWeather(lat, long);
 
 }
@@ -48,20 +55,17 @@ function getCurrentWeather(lat, long) {
         },
         success: function(response) {
             console.log(response);            
-
-            var currentDateAndTime = moment.unix(response.dt).format('dddd, MMMM Do YYYY, h:mm a');
-            $("#current-date-and-time").append(currentDateAndTime);
-
+            var currentDate = moment.unix(response.dt).format('MMMM Do YYYY');
+            $("#current-date").append(currentDate);
+            var currentTime = moment.unix(response.dt).format('dddd h:mm a');
+            $("#current-time").append(currentTime);
             var currentCondition = response.weather[0].description;
             $("#current-condition").append(currentCondition.toTitleCase());
-
             var iconCode = response.weather[0].icon;
             var dayOrNight = iconCode.substring(iconCode.length - 1);
             $("#current-icon").append("<i class='owf owf-4x owf-" + response.weather[0].id + "-" + dayOrNight + "'></i>");
-
             var currentTemp = response.main.temp;
-            $("#current-temp").append(parseInt(currentTemp) + "&#8457;");
-            
+            $("#current-temp").append(parseInt(currentTemp) + "&#8457;");            
         },
         error: function(error) {
             console.log(error);
