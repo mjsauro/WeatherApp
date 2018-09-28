@@ -6,14 +6,37 @@ $(document).ready(function () {
 
 function getLocation() {
     navigator.geolocation.getCurrentPosition(showPosition);
+
 }
 
 function showPosition(position) {
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
     getCurrentWeather(lat, long);
+    geoCodeLatLng(lat, long);
     //getWeather(lat, long);
 
+}
+
+function geoCodeLatLng(lat, long) {
+    var geocoder = new google.maps.Geocoder();
+    var latlng = {lat: parseFloat(lat), lng: parseFloat(long)};
+    
+    geocoder.geocode({'location': latlng}, function(results, status) {
+        if (status === 'OK') {
+          if (results[0]) {
+            var cityName = (results[0]).address_components[3].short_name;          
+            var state = (results[0]).address_components[5].short_name;
+            var zip = (results[0]).address_components[7].short_name;
+            $("#address").append(cityName + ", " + state + " " + zip);
+            
+          } else {
+            console.log('No results found');
+          }
+        } else {
+          console.log('Geocoder failed due to: ' + status);
+        }
+      });
 }
 
 function getCurrentWeather(lat, long) {
@@ -24,12 +47,9 @@ function getCurrentWeather(lat, long) {
             format: 'json'
         },
         success: function(response) {
-            console.log(response);
-            
-            var cityName = response.name;
-            $("#city-name").append(cityName);
+            console.log(response);            
 
-            var currentDateAndTime = moment.unix(response.dt).format('MMMM Do YYYY, h:mm a');
+            var currentDateAndTime = moment.unix(response.dt).format('dddd, MMMM Do YYYY, h:mm a');
             $("#current-date-and-time").append(currentDateAndTime);
 
             var currentCondition = response.weather[0].description;
