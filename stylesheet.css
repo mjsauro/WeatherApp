@@ -1,5 +1,10 @@
 body {
   background-image: -webkit-gradient(linear, left top, right top, from(#5faaf2), color-stop(#409ed9), color-stop(#2692bf), color-stop(#1684a5), to(#15768b));
   background-image: linear-gradient(to right, #5faaf2, #409ed9, #2692bf, #1684a5, #15768b);
+  font-family: "Open Sans", sans-serif;
+}
+
+.temperature {
+  font-size: 4em;
 }
 /*# sourceMappingURL=stylesheet.css.map */

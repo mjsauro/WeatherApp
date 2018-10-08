@@ -21,7 +21,7 @@ function showPosition(position) {
     getCurrentWeather(lat, long);
 
     //retrieves additional weather conditions
-    //getWeather(lat, long);
+    getWeather(lat, long);
 
 }
 
@@ -54,7 +54,7 @@ function getCurrentWeather(lat, long) {
             format: 'json'
         },
         success: function(response) {
-            console.log(response);            
+            console.log(response);        
             var currentDate = moment.unix(response.dt).format('MMMM Do YYYY');
             $("#current-date").append(currentDate);
             var currentTime = moment.unix(response.dt).format('dddd h:mm a');
@@ -63,9 +63,16 @@ function getCurrentWeather(lat, long) {
             $("#current-condition").append(currentCondition.toTitleCase());
             var iconCode = response.weather[0].icon;
             var dayOrNight = iconCode.substring(iconCode.length - 1);
-            $("#current-icon").append("<i class='owf owf-4x owf-" + response.weather[0].id + "-" + dayOrNight + "'></i>");
+            $("#current-icon").addClass("owf owf-" + response.weather[0].id + "-" + dayOrNight + "");
             var currentTemp = response.main.temp;
-            $("#current-temp").append(parseInt(currentTemp) + "&#8457;");            
+            $("#current-temp").append(parseInt(currentTemp) + "&#8457;"); 
+            var rain = response.rain["1h"];
+            $("#rain").append(rain);
+            var humidity = response.main.humidity;
+            $("#humidity").append(humidity);
+            var windDeg = response.wind.deg;
+            var windSpeed = response.wind.speed;
+            $("#wind").append(windSpeed + " mph " + convertDeg(windDeg));
         },
         error: function(error) {
             console.log(error);
@@ -73,26 +80,23 @@ function getCurrentWeather(lat, long) {
     });      
 }
 
-// function getWeather(lat, long) 
-// {
-//     $.ajax({
-//         url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&APPID=f359c189ba425c0490e35966335db4c7",
-//         type: "GET",
-//         data: {
-//             format: 'json'
-//         },
-//         success: function(response) {
-//             console.log(response);
-//             console.log(response.city.name);
-//             console.log();
-
-//             for (var i = 0; i < 5; i++);
-//             var date1 = (moment.unix(response.list[0].dt).format("LLL"));
-//             $("#date1").append(date1);
-
-//         },
-//         error: function(error) {
-//             console.log(error);
-//         }
-//     });      
-// }
+function getWeather(lat, long) 
+{
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&APPID=f359c189ba425c0490e35966335db4c7",
+        type: "GET",
+        data: {
+            format: 'json'
+        },
+        success: function(response) {
+            console.log(response.list);                        
+            for (var i = 0; i <=7; i++) {                                
+                var time = moment.unix(response.list[i].dt).format('h:mm a');
+                $("#time" + i).text(time);
+            }
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });      
+}

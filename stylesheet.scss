@@ -9,22 +9,15 @@ $roboto-mono: 'Roboto Mono', monospace;
 $roboto: 'Roboto', sans-serif;
 
 //font-size
-$h1-size: 4.5em;
-$h2-size: 2.5em;
+$heading1: 4.0em;
+$heading2: 2.5em;
 
 body {
     background-image: $background-color;   
+    font-family: $open-sans;
 };
 
-// h1, #date, .label {
-//     color: $headline-color;
-//     font-family: $ubantu;
-// }
-
-// h1  {
-//     font-size: $h1-size;
-// };
-
-// #date, .label  {
-//     font-size: $h2-size;
-// };
+.temperature {
+    font-size: $heading1;
+   
+}

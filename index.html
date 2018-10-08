@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12 col-xs-6 text-white text-center text-capitalize">
-                <p>Today's Date: <span id="current-date"></span></p>                
+                <p>Today's Date: <span id="current-date"></span></p>
             </div>
         </div>
         <div class="row">
@@ -38,12 +38,34 @@
                         <span id="current-condition"></span>
                     </div>
                     <div class="card-body mt-2">
-                        <span id="current-icon"></span>
-                        <span id="current-temp"></span><span></span>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <i class="owf-2x" id="current-icon"><span class="pl-4" id="current-temp"></span></i>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <span>Rain: <span id="rain"></span></span>
+                                <br />
+                                <span>Humidity: <span id="humidity"></span>%</span>
+                                <br />
+                                <span>Wind: <span id="wind"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer mt-2">
+                        <button id="time0" type="button" class="btn btn-outline-light"></button>
+                        <button id="time1" type="button" class="btn btn-outline-light"></button>
+                        <button id="time2" type="button" class="btn btn-outline-light"></button>
+                        <button id="time3" type="button" class="btn btn-outline-light"></button>
+                        <button id="time4" type="button" class="btn btn-outline-light"></button>
+                        <button id="time5" type="button" class="btn btn-outline-light"></button>
+                        <button id="time6" type="button" class="btn btn-outline-light"></button>
+                        <button id="time7" type="button" class="btn btn-outline-light"></button>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -55,7 +77,14 @@
     <script src=titleCase.js></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRG6tjiCDHxerG9oPjQuR63-FRj-l7dEE">
 
+
+
+
+
+
+
     </script>
+    <script src="degToDirection.js"></script>
     <script src="javascript.js"></script>
 </body>
 
