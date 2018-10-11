@@ -1,0 +1,23 @@
+//colors
+$background-color: linear-gradient(to right, #5faaf2, #409ed9, #2692bf, #1684a5, #15768b);
+$headline-color: rgb(255, 255, 255);
+
+//fonts
+$open-sans: 'Open Sans', sans-serif;
+$ubantu: 'Ubuntu', sans-serif;
+$roboto-mono: 'Roboto Mono', monospace;
+$roboto: 'Roboto', sans-serif;
+
+//font-size
+$heading1: 4.0em;
+$heading2: 2.5em;
+
+body {
+    background-image: $background-color;   
+    font-family: $open-sans;
+};
+
+.temperature {
+    font-size: $heading1;
+   
+}
