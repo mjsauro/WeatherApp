@@ -1,0 +1,11 @@
+var lat;
+var long;
+var currentDate;
+var currentTime;
+var currentCondition;
+var iconCode;
+var dayOrNight;
+var currentTemp;
+var humidity;
+var windDeg;
+var clickedHour;

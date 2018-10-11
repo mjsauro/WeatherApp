@@ -1,8 +1,16 @@
 $(document).ready(function () {
-    
+
     //everything starts here
     getLocation();
 
+});
+
+
+$(":button").click(function (event) {
+
+    //we are slicing the id to get the actual number with the string "time"
+    clickedHour = event.target.id.slice(4);
+    getWeatherByTime(lat, long, clickedHour);
 });
 
 function getLocation() {
@@ -11,39 +19,44 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude;
-    
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
+
     //retrieves the city, state, zip of coordinates through google maps api
     geoCodeLatLng(lat, long);
 
     //retrieves the current weather conditions
     getCurrentWeather(lat, long);
 
-    //retrieves additional weather conditions
-    getWeather(lat, long);
+    //populates the button times
+    getButtonTimes(lat, long);
 
 }
 
 function geoCodeLatLng(lat, long) {
     var geocoder = new google.maps.Geocoder();
-    var latlng = {lat: parseFloat(lat), lng: parseFloat(long)};
-    
-    geocoder.geocode({'location': latlng}, function(results, status) {
+    var latlng = {
+        lat: parseFloat(lat),
+        lng: parseFloat(long)
+    };
+
+    geocoder.geocode({
+        'location': latlng
+    }, function (results, status) {
         if (status === 'OK') {
-          if (results[0]) {
-            var cityName = (results[0]).address_components[3].short_name;          
-            var state = (results[0]).address_components[5].short_name;
-            var zip = (results[0]).address_components[7].short_name;
-            $("#address").append(cityName + ", " + state + " " + zip);
-            
-          } else {
-            console.log('No results found');
-          }
+            if (results[0]) {
+                var cityName = (results[0]).address_components[3].short_name;
+                var state = (results[0]).address_components[5].short_name;
+                var zip = (results[0]).address_components[7].short_name;
+                $("#address").append(cityName + ", " + state + " " + zip);
+
+            } else {
+                console.log('No results found');
+            }
         } else {
-          console.log('Geocoder failed due to: ' + status);
+            console.log('Geocoder failed due to: ' + status);
         }
-      });
+    });
 }
 
 function getCurrentWeather(lat, long) {
@@ -53,50 +66,84 @@ function getCurrentWeather(lat, long) {
         data: {
             format: 'json'
         },
-        success: function(response) {
-            console.log(response);        
-            var currentDate = moment.unix(response.dt).format('MMMM Do YYYY');
+        success: function (r) {
+            currentDate = moment.unix(r.dt).format('MMMM Do YYYY');
             $("#current-date").append(currentDate);
-            var currentTime = moment.unix(response.dt).format('dddd h:mm a');
+            currentTime = moment.unix(r.dt).format('dddd h:mm a');
             $("#current-time").append(currentTime);
-            var currentCondition = response.weather[0].description;
+            currentCondition = r.weather[0].description;
             $("#current-condition").append(currentCondition.toTitleCase());
-            var iconCode = response.weather[0].icon;
-            var dayOrNight = iconCode.substring(iconCode.length - 1);
-            $("#current-icon").addClass("owf owf-" + response.weather[0].id + "-" + dayOrNight + "");
-            var currentTemp = response.main.temp;
-            $("#current-temp").append(parseInt(currentTemp) + "&#8457;"); 
-            var rain = response.rain["1h"];
-            $("#rain").append(rain);
-            var humidity = response.main.humidity;
+            iconID = r.weather[0].id;
+            dayOrNight = r.weather[0].icon.slice(-1);
+            $("#current-icon").addClass("owf-2x owf owf-" + iconID + "-" + dayOrNight + "");
+            currentTemp = r.main.temp;
+            $("#current-temp").append(parseInt(currentTemp) + "&#8457;");
+            if (typeof r.rain !== "undefined") {
+                var rain = r.rain["1h"];
+                $("#rain").append(rain);
+            } else {
+                $("#rain-span").hide();
+            }
+            humidity = r.main.humidity;
             $("#humidity").append(humidity);
-            var windDeg = response.wind.deg;
-            var windSpeed = response.wind.speed;
+            windDeg = r.wind.deg;
+            windSpeed = r.wind.speed;
             $("#wind").append(windSpeed + " mph " + convertDeg(windDeg));
         },
-        error: function(error) {
+        error: function (error) {
             console.log(error);
         }
-    });      
+    });
 }
 
-function getWeather(lat, long) 
-{
+function getButtonTimes(lat, long) {
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&APPID=f359c189ba425c0490e35966335db4c7",
         type: "GET",
         data: {
             format: 'json'
         },
-        success: function(response) {
-            console.log(response.list);                        
-            for (var i = 0; i <=7; i++) {                                
-                var time = moment.unix(response.list[i].dt).format('h:mm a');
+        success: function (r) {
+            for (var i = 0; i <= 7; i++) {
+                var time = moment.unix(r.list[i].dt).format('h:mm a');
                 $("#time" + i).text(time);
+
             }
         },
-        error: function(error) {
+        error: function (error) {
             console.log(error);
         }
-    });      
+    });
+}
+
+function getWeatherByTime(lat, long, clickedHour) {
+
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&units=imperial" + "&APPID=f359c189ba425c0490e35966335db4c7",
+        type: "GET",
+        data: {
+            format: 'json'
+        },
+        success: function (r) {
+            r = r.list[clickedHour];
+            currentTime = moment.unix(r.dt).format('dddd h:mm a');
+            $("#current-time").text("").append(currentTime);
+            currentCondition = r.weather[0].description;
+            $("#current-condition").text("").append(currentCondition.toTitleCase());
+            iconID = r.weather[0].id;
+            dayOrNight = r.weather[0].icon.slice(-1);
+            $("#current-icon").removeClass().addClass("owf-2x owf owf-" + iconID + "-" + dayOrNight + "");
+            currentTemp = r.main.temp;
+            $("#current-temp").text("").append(parseInt(currentTemp) + "&#8457;");
+            humidity = r.main.humidity;
+            $("#humidity").text("").append(humidity);
+            windDeg = r.wind.deg;
+            windSpeed = r.wind.speed;
+            $("#wind").text("").append(windSpeed + " mph " + convertDeg(windDeg));
+
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
 }

@@ -40,11 +40,13 @@
                     <div class="card-body mt-2">
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <i class="owf-2x" id="current-icon"><span class="pl-4" id="current-temp"></span></i>
+                                <i id="current-icon"><span class="pl-4" id="current-temp"></span></i>
                             </div>
                             <div class="col-12 col-md-6">
-                                <span>Rain: <span id="rain"></span></span>
-                                <br />
+                                <div id="rain-span">
+                                    <span>Rain: <span id="rain"></span></span>
+                                    <br />
+                                </div>
                                 <span>Humidity: <span id="humidity"></span>%</span>
                                 <br />
                                 <span>Wind: <span id="wind"></span>
@@ -64,7 +66,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="btn btn-group">                                
+                                <div class="btn btn-group">
                                     <div class="row">
                                         <div class="col-12 offset-2">
                                             <button id="time4" type="button" class="btn btn-outline-light"></button>
@@ -74,7 +76,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -82,9 +83,7 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
+ 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -92,15 +91,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+    <script src="variables.js"></script>
     <script src=titleCase.js></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRG6tjiCDHxerG9oPjQuR63-FRj-l7dEE">
-
-
-
-
-
-
-
     </script>
     <script src="degToDirection.js"></script>
     <script src="javascript.js"></script>
